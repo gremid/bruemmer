@@ -1,0 +1,21 @@
+{
+  "name": "bruemmer",
+  "version": "0.0.0",
+  "authors": [
+    "gremid <gregor@middell.net>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.1",
+    "d3": "3.4.9",
+    "pure": "0.5.0"
+  }
+}

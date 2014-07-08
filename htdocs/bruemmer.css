@@ -1,0 +1,90 @@
+body {
+    width: 960px;
+    margin: 1em auto;
+}
+
+a {
+    color: #2647A0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.lead {
+    font-size: 1.17em;
+}
+
+.chart {
+    overflow: auto;
+}
+
+.chart svg {
+    display: block;
+    margin: 1em auto;
+}
+
+.live-data .axis path, .live-data .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.live-data .axis text {
+    font-size: 0.67em;
+}
+
+.live-data .area {
+    stroke: #ccc;
+    stroke-width: 1px;
+}
+
+.live-data .total {
+    fill: #99f;
+}
+
+.live-data .male {
+    fill: #66f;
+}
+
+.live-data .female {
+    fill: #33f;
+}
+
+.professions rect {
+    stroke-width: 1px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #ccf;
+    fill: #99f;
+}
+
+.professions text {
+    font-size: 12px;
+}
+
+.persons {
+    margin: 2em auto;
+}
+
+.persons .alias {
+    color: #99f;
+}
+
+.persons .present-in-remains {
+    font-weight: bold;
+}
+
+.persons .male:after, .persons .female:after {
+    font-size: small;
+    vertical-align: super;
+}
+
+.persons .male:after {
+    content: '♂';
+}
+
+.persons .female:after {
+    content: '♀';
+}

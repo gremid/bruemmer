@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Franz-Brümmer-Gesellschaft :: Prototyp</title>
+    <link rel="stylesheet" href="pure/pure-min.css">
+    <link rel="stylesheet" href="pure/base-min.css">
+    <link rel="stylesheet" href="pure/grids-min.css">
+    <link rel="stylesheet" href="pure/tables-min.css">
+    <link rel="stylesheet" href="bruemmer.css">
+</head>
+<body>
+
+<p class="lead">
+    Hallo Welt!
+</p>
+
+<h2>Lebensdaten</h2>
+
+<div class="chart"><svg class="live-data"></svg></div>
+
+<h2>Berufe</h2>
+
+<div class="chart"><svg class="professions"></svg></div>
+
+<h2>Autorenverzeichnis</h2>
+
+<table class="persons pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <th>Name<sup><a href="#notes" title="Anmerkungen/ Legende">†</a></sup></th>
+            <th>Lebensdaten</th>
+            <th>Beruf</th>
+            <th>Lexikon</th>
+            <th>GND</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#persons}}
+        <tr>
+            <td class="name"><span class="{{#status}}{{.}} {{/status}}">{{name}}</span></td>
+            <td class="live-data" data-born="{{#born}}{{.}}{{/born}}" data-died="{{#died}}{{.}}{{/died}}">{{#liveData}}{{.}}{{/liveData}}</td>
+            <td class="profession {{#male}}male{{/male}}">{{#professions}}{{^-first}}, {{/-first}}<span>{{.}}</span>{{/professions}}</td>
+            <td class="page">{{#page}}<a href="http://www.archive.org/stream/lexikonderdeutsc01bruoft#page/{{.}}" title="Seite {{.}}">p{{.}}</a>{{/page}}</td>
+            <td class="gnd">{{#gnd}}{{^-first}}, {{/-first}}<a href="http://d-nb.info/gnd/{{.}}" title="{{.}}" data-gnd="{{.}}">{{.}}</a>{{/gnd}}</td>
+        </tr>
+    {{/persons}}
+    </tbody>
+</table>
+
+<script src="jquery/dist/jquery.min.js" charset="utf-8"></script>
+<script src="d3/d3.min.js" charset="utf-8"></script>
+<script src="bruemmer.js" charset="utf-8"></script>
+</body>
+</html>
