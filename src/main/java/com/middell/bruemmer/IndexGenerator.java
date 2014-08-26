@@ -27,7 +27,7 @@ public class IndexGenerator {
                 .toSortedList(PersonRecords.GERMAN_COLLATION::compare)
                 .flatMap(Observable::from)
                 .reduce(new HashMap<>(), IndexGenerator::result)
-                .toBlockingObservable()
+                .toBlocking()
                 .single();
         try (
                 Reader templateReader = new InputStreamReader(IndexGenerator.class.getResourceAsStream("/index.mustache"));
@@ -45,6 +45,4 @@ public class IndexGenerator {
         persons.add(record);
         return result;
     }
-
-
 }

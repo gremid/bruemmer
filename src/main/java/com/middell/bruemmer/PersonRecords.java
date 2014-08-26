@@ -9,7 +9,8 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.shared.DoesNotExistException;
 import rx.Observable;
-import rx.concurrency.Schedulers;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,7 +43,7 @@ import java.util.stream.Collectors;
 public class PersonRecords {
 
     public static Observable<Map<String, Object>> create() {
-        final Observable<List<String>> records = Observable.create(observer -> Schedulers.threadPoolForIO().schedule(() -> {
+        final Observable<List<String>> records = Observable.create((Subscriber<? super List<String>> observer) -> {
             try (CSVReader csv = new CSVReader(new InputStreamReader(new FileInputStream(RECORDS_FILE), CHARSET))) {
                 int line = 0;
                 while (true) {
@@ -78,7 +79,7 @@ public class PersonRecords {
                 return;
             }
             observer.onCompleted();
-        }));
+        }).subscribeOn(Schedulers.io());
 
         return records.parallel(shard -> shard.map(PersonRecords::parse).map(PersonRecords::gnd));
     }
