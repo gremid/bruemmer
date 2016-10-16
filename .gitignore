@@ -1,2 +1,3 @@
 data/gnd/*.xml
 htdocs
+target/
